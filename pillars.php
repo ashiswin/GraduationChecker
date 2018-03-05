@@ -176,7 +176,7 @@
 				</div>
 				<div class="modal-body">
 					<ul class="nav nav-pills" style="margin-top: 2vh; margin-left: 2vh;">
-						<li class="nav-item"><a href="#" class="nav-link" id="tabTrackCoreModules">Modules</a></li>
+						<li class="nav-item"><a href="#" class="nav-link active" id="tabTrackCoreModules">Modules</a></li>
 						<li class="nav-item"><a href="#" class="nav-link" id="tabTrackCoreLists">Lists</a></li>
 					</ul>
 					<br>
@@ -351,6 +351,8 @@
 					
 					$("#tblTrackCoreLists").hide();
 					$("#tblTrackCoreModules").show();
+					
+					$("#txtAddTrackCoreSearch").attr('placeholder', 'Module code, Module name...');
 				});
 				$("#tabTrackCoreLists").click(function(e) {
 					e.preventDefault();
@@ -359,6 +361,8 @@
 					
 					$("#tblTrackCoreLists").show();
 					$("#tblTrackCoreModules").hide();
+					
+					$("#txtAddTrackCoreSearch").attr('placeholder', 'List name...');
 				});
 			});
 			
