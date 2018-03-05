@@ -64,11 +64,11 @@
 		</div>
 	</div>
 	<!-- UI element for top selector (Details, Stats, Attendees) -->
-	<ul class="nav nav-pills" style="margin-top: 2vh; margin-left: 2vh;">
+	<ul class="nav nav-tabs" style="margin-top: 2vh; margin-left: 2vh;">
 		<li class="nav-item"><a href="#" class="nav-link" id="tabProperties">Properties</a></li>
 		<li class="nav-item"><a href="#" class="nav-link active" id="tabTracks">Tracks</a></li>
 	</ul>
-	<div class="container-fluid" style="margin-top: 2vh">
+	<div class="container-fluid">
 		<div id="paneProperties" class="row main-content">
 			
 		</div>
@@ -77,7 +77,7 @@
 			<div class="col-md-4 col-xs-4">
 				<div class="scrollable">
 					<table class="table table-hover" id="tblTracks">
-						<thead><a href="#" id="btnAddTrack" style="font-size: large;"><i class="fa fa-plus"></i> Add Track</a></thead>
+						<thead><a href="#" id="btnAddTrack" style="font-size: large !important;"><i class="fa fa-plus"></i> Add Track</a></thead>
 						<tbody class="detailList" id="detailTracks">
 						</tbody>
 					</table>
@@ -250,7 +250,7 @@
 				if(response.success) {
 					var detailTracks = "";
 					for(var i = 0; i < response.tracks.length; i++) {
-						detailTracks += "<tr><td>" + response.tracks[i].name + "</td></tr>";
+						detailTracks += "<tr><td id=\"" + response.tracks[i].id + "\">" + response.tracks[i].name + "</td></tr>";
 					}
 					
 					$("#detailTracks").html(detailTracks);
@@ -258,7 +258,7 @@
 						select(response.tracks[0].id);
 					}
 					
-					$("#detailList > tr > td").click(function() {
+					$("#detailTracks > tr > td").click(function() {
 						var trackId = $(this).attr('id');
 						
 						select(trackId);

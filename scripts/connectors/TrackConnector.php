@@ -24,7 +24,7 @@
 
 			$this->selectStatement = $mysqli->prepare("SELECT * FROM `" . TrackConnector::$TABLE_NAME . "` WHERE `" . TrackConnector::$COLUMN_ID . "` = ?");
 
-			$this->selectByPillarStatement = $mysqli->prepare("SELECT * FROM `" . TrackConnector::$TABLE_NAME . "` WHERE `" . TrackConnector::$COLUMN_PILLAR . "` = ?");
+			$this->selectByPillarStatement = $mysqli->prepare("SELECT * FROM `" . TrackConnector::$TABLE_NAME . "` WHERE `" . TrackConnector::$COLUMN_PILLAR . "` = ? ORDER BY `" . TrackConnector::$COLUMN_NAME . "`");
 
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM `" . TrackConnector::$TABLE_NAME . "`");
 
