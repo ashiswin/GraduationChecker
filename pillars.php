@@ -239,6 +239,7 @@
 				var response = JSON.parse(data); // Parse the response from JSON
 				
 				if(response.success) {
+					$("#txtElectives").val(response.track.electives);
 					console.log(response);
 				}
 			});
