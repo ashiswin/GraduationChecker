@@ -58,14 +58,9 @@
 		}
 	</style>
 	<?php require_once 'nav.php' ?>
-	<div class="container-fluid" style="margin-top: 2vh">
+	<div class="container-fluid" style="margin-top: 2vh; margin-left: 2vh;">
 		<div class="row">
-			<div class="col-md-4">
-				<span style="font-size: 5em">ISTD</span>
-			</div>
-			<div class="col-md-1">
-				<i class="fa fa-pencil"></i>
-			</div>
+			<span style="font-size: 5em">ISTD<i class="fa fa-pencil"></i></span>
 		</div>
 	</div>
 	<!-- UI element for top selector (Details, Stats, Attendees) -->
