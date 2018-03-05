@@ -86,7 +86,7 @@
 			<!-- Begin main detail view -->
 			<div class="col-md-8 col-xs-8 scrollable" style="border-left: 1px solid #CCCCCC;">
 				<div id="mainContentTracks" style="margin-top: 2vh">
-					<h3>Core Modules <span class="float-md-right"><button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Core</button></span></h3>
+					<h3>Core Modules <span class="float-md-right"><button class="btn btn-primary" id="btnAddTrackCore"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Core</button></span></h3>
 					<br>
 					<table class="table table-hover">
 						<colgroup>
@@ -192,6 +192,29 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" id="btnAddTrackConfirm">Add</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="mdlAddCore">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Add Core Module</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
+						<input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" id="txtAddTrackCoreSearch">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="btnAddTrackCoreConfirm">Add</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
@@ -328,6 +351,9 @@
 						loadTracks();
 					}
 				});
+			});
+			$("#btnAddTrackCore").click(function() {
+				$("#mdlAddTrackCore").modal();
 			});
 			
 			$("#pillarName").html(pillar);
