@@ -77,7 +77,7 @@
 			<div class="col-md-4 col-xs-4">
 				<div class="scrollable">
 					<table class="table table-hover" id="tblTracks">
-						<thead style="font-size: x-large;"><a href="#" id="btnAddTrack" style="font-size: x-large; margin: 5vh 2vh;"><i class="fa fa-plus"></i> Add Track</a></thead>
+						<thead style="font-size: x-large; padding: 2vh;"><a href="#" id="btnAddTrack" style="font-size: x-large; margin: 2vh;"><i class="fa fa-plus"></i> Add Track</a></thead>
 						<tbody class="detailList" id="detailTracks">
 						</tbody>
 					</table>
