@@ -182,10 +182,10 @@
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-3">
 							Track Name: 
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-9">
 							<input class="form-control" type="text" name="txtAddTrackName" id="txtAddTrackName">
 						</div>
 					</div>
@@ -245,7 +245,7 @@
 					}
 					
 					$("#detailTracks").html(detailTracks);
-					
+					console.log(detailTracks);
 					if(response.tracks.length > 0) {
 						select(response.tracks[0].id);
 					}
