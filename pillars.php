@@ -197,7 +197,7 @@
 	<script type="text/javascript">
 		var selected = -1;
 		
-		var pillar = <?php echo $_GET['pillar']; ?>;
+		var pillar = "<?php echo $_GET['pillar']; ?>";
 		function select(trackId) {
 			if(selected != -1) {
 				$("#" + selected).removeClass('bg-info');

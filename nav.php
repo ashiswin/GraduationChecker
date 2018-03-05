@@ -6,7 +6,7 @@
 	<a class="navbar-brand" href="/"><?php echo SITE_NAME; ?></a>
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav">
+		<ul class="navbar-nav my-2 my-lg-0">
 			<li id="navGradcheck" class="nav-item"><a href="check.php" class="nav-link">Check</a></li>
 			<li id="navManage" class="nav-item"><a href="modules.php" class="nav-link">Modules</a></li>
 			<li id="navPillars" class="nav-item dropdown">
