@@ -507,41 +507,26 @@
 			$("#navManage").addClass("active");
 			loadLists();
 			
-			$("#tabModuleLists").click(function(e) {
+			$("#tabTracks").click(function(e) {
 				e.preventDefault();
 				
-				$("#paneModuleLists").show();
-				$("#paneRuleSets").hide();
-				$("#paneRules").hide();
+				$("#paneTracks").show();
+				$("#paneProperties").hide();
 				
-				$("#tabModuleLists").addClass("active");
-				$("#tabRuleSets").removeClass("active");
-				$("#tabRules").removeClass("active");
+				$("#tabTracks").addClass("active");
+				$("#tabProperties").removeClass("active");
 			});
-			$("#tabRuleSets").click(function(e) {
+			$("#tabProperties").click(function(e) {
 				e.preventDefault();
 				
-				$("#paneModuleLists").hide();
-				$("#paneRuleSets").show();
-				$("#paneRules").hide();
+				$("#paneTracks").hide();
+				$("#paneProperties").show();
 				
-				$("#tabModuleLists").removeClass("active");
-				$("#tabRuleSets").addClass("active");
-				$("#tabRules").removeClass("active");
-			});
-			$("#tabRules").click(function(e) {
-				e.preventDefault();
-				
-				$("#paneModuleLists").hide();
-				$("#paneRuleSets").hide();
-				$("#paneRules").show();
-				
-				$("#tabModuleLists").removeClass("active");
-				$("#tabRuleSets").removeClass("active");
-				$("#tabRules").addClass("active");
+				$("#tabTracks").removeClass("active");
+				$("#tabProperties").addClass("active");
 			});
 			
-			$("#tabRules").click();
+			$("#tabTracks").click();
 		});
 	</script>
 </body>
