@@ -54,8 +54,8 @@
         
 		public function selectByPillar($pillar) {
 			$this->selectByPillarStatement->bind_param("s", $pillar);
-			if(!$this->selectAllStatement->execute()) return false; // if the query didn't execute, return false
-			$result = $this->selectAllStatement->get_result(); // frees memory
+			if(!$this->selectByPillarStatement->execute()) return false; // if the query didn't execute, return false
+			$result = $this->selectByPillarStatement->get_result(); // frees memory
 			$resultArray = $result->fetch_all(MYSQLI_ASSOC);
 			return $resultArray;
 		}
