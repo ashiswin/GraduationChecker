@@ -9,7 +9,17 @@
 		<ul class="navbar-nav">
 			<li id="navGradcheck" class="nav-item"><a href="check.php" class="nav-link">Check</a></li>
 			<li id="navManage" class="nav-item"><a href="modules.php" class="nav-link">Modules</a></li>
-			<li id="navPillars" class="nav-item"><a href="pillars.php" class="nav-link">Pillars</a></li>
+			<li id="navPillars" class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Pillars
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+				<a class="dropdown-item" href="pillars.php?pillar=ISTD">ISTD</a>
+				<a class="dropdown-item" href="pillars.php?pillar=ASD">ASD</a>
+				<a class="dropdown-item" href="pillars.php?pillar=EPD">EPD</a>
+				<a class="dropdown-item" href="pillars.php?pillar=ESD">ESD</a>
+				</div>
+			</li>
 		</ul>
 	</div>
 </nav>

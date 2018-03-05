@@ -60,7 +60,7 @@
 	<?php require_once 'nav.php' ?>
 	<div class="container-fluid" style="margin-top: 2vh;">
 		<div class="row">
-			<span style="font-size: 5em; margin-left: 2vh;">ISTD</span><i class="fa fa-pencil"></i>
+			<span style="font-size: 5em; margin-left: 2vh;" id="pillarName"></span><i class="fa fa-pencil"></i>
 		</div>
 	</div>
 	<!-- UI element for top selector (Details, Stats, Attendees) -->
@@ -70,33 +70,14 @@
 	</ul>
 	<div class="container-fluid" style="margin-top: 2vh">
 		<div id="paneProperties" class="row main-content">
-			<!-- Create side pane with events -->
-			<div class="col-md-4 col-xs-4">
-				<div class="scrollable">
-					<table class="table table-hover" id="tblLists">
-						<thead><th>Lists</th></thead>
-						<tbody class="detailList" id="detailList">
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<!-- Begin main detail view -->
-			<div class="col-md-8 col-xs-8 scrollable" style="border-left: 1px solid #CCCCCC;">
-				<div id="mainContent">
-					<table class="table table-hover">
-						<thead><tr><th>#</th><th>Module</th><th>Required Grades</th><th><i class="fa fa-pencil"></i></th><th><i class="fa fa-times"></i></th></tr></thead>
-						<tbody id="tblModules">
-						</tbody>
-					</table>
-				</div>
-			</div>
+			
 		</div>
 		<div id="paneTracks" class="row main-content">
 			<!-- Create side pane with events -->
 			<div class="col-md-4 col-xs-4">
 				<div class="scrollable">
 					<table class="table table-hover" id="tblTracks">
-						<thead><a href="#" id="btnAddTrack"><i class="fa fa-plus"></i> Add Track</a></thead>
+						<thead><a href="#" id="btnAddTrack" style="font-size: large;"><i class="fa fa-plus"></i> Add Track</a></thead>
 						<tbody class="detailList" id="detailTracks">
 						</tbody>
 					</table>
@@ -132,7 +113,7 @@
 							<input type="number" class="form-control" id="txtElectives" name="txtElectives">
 						</div>
 						<div class="col-md-11">
-							of the following electives is required.
+							of the following electives is required
 						</div>
 					</div>
 					<table class="table table-hover">
@@ -152,73 +133,6 @@
 						</thead>
 						<tbody class="tblTrackElectives"></tbody>
 					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="modal" id="mdlAddModuleList">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Add module list</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="form-inline">
-							<label for="txtModuleListName" class="control-label mb-2 mr-sm-2 mb-sm-0">List name:</label>
-							<input type="text" class="form-control" name="txtModuleListName" id="txtModuleListName" />
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" id="btnAddModuleListSave">Add</button>
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="modal" id="mdlEditModuleList">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Edit module list</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="form-inline">
-							<label for="txtModuleEditListName" class="control-label mb-2 mr-sm-2 mb-sm-0">List name:</label>
-							<input type="text" class="form-control" name="txtModuleEditListName" id="txtModuleEditListName" />
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" id="btnEditModuleListSave">Save</button>
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="modal" id="mdlDeleteList">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Delete module list</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<p>Are you sure you want to delete this module list? This will remove all associated modules along with it.</p>
-					<p class="text-warning" style="font-weight: bold">THIS ACTION CANNOT BE UNDONE!</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" id="btnDeleteListConfirm">Delete</button>
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
@@ -257,54 +171,20 @@
 		</div>
 	</div>
 	
-	<div class="modal" id="mdlEditModule">
+	<div class="modal" id="mdlDeleteTrackCore">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Edit module</h5>
+					<h5 class="modal-title">Delete Core</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<table style="border: 0">
-						<tr>
-							<td><label for="txtEditModuleCode" class="control-label mb-2 mr-sm-2 mb-sm-0">Module Code:</label></td>
-							<td><input type="text" class="form-control" name="txtEditModuleCode" id="txtEditModuleCode" placeholder="XX.XXX" /></td>
-						</tr>
-						<tr>
-							<td><label for="txtEditModuleName" class="control-label mb-2 mr-sm-2 mb-sm-0">Module Name:</label></td>
-							<td><input type="text" class="form-control" name="txtEditModuleName" id="txtEditModuleName" /></td>
-						</tr>
-						<tr>
-							<td><label for="txtEditRequiredGrades" class="control-label mb-2 mr-sm-2 mb-sm-0">Required Grades:</label></td>
-							<td><input type="text" class="form-control" name="txtEditRequiredGrades" id="txtEditRequiredGrades" value="A,B,C,D" /></td>
-						</tr>
-					</table>
+					<p>Are you sure you want to delete this core module?</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" id="btnEditModuleSave">Save</button>
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="modal" id="mdlDeleteModule">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Delete module</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<p>Are you sure you want to delete this module?</p>
-					<p class="text-warning" style="font-weight: bold">THIS ACTION CANNOT BE UNDONE!</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" id="btnDeleteModuleConfirm">Delete</button>
+					<button type="button" class="btn btn-danger" id="btnDeleteTrackCoreConfirm">Delete</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
@@ -316,230 +196,60 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		var selected = -1;
-		var lists = null;
-		var modules = null;
-		var deleteList = -1;
-		var editList = -1;
-		var deleteModule = -1;
-		var editModule = -1;
 		
-		function select(listId) {
+		var pillar = <?php echo $_GET['pillar']; ?>;
+		function select(trackId) {
 			if(selected != -1) {
 				$("#" + selected).removeClass('bg-info');
 			}
-			selected = listId;
-			$("#" + listId).addClass('bg-info');
-			loadModules(listId);
+			selected = trackId;
+			$("#" + trackId).addClass('bg-info');
+			loadTrack(trackId);
 		}
 		
-		function loadModules(listId) {
-			$.get("scripts/GetModuleListItems.php?listId=" + listId, function(resultData) {
-				var resultObject = JSON.parse(resultData);
-				
-				if(resultObject.success) {
-					modules = resultObject.modules;
-					var moduleTableHTML = "";
-					
-					for(var i = 0; i < resultObject.modules.length; i++) {
-						moduleTableHTML += "<tr><td>" + (i + 1) + "</td><td>" + resultObject.modules[i].moduleCode + " - " + resultObject.modules[i].moduleName + "</td><td>" + resultObject.modules[i].requiredGrades + "</td><td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"edit-module\"><i class=\"fa fa-pencil\"></i></a></td><td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"delete-module\"><i class=\"fa fa-times\"></i></td></a></tr>";
-					}
-					
-					moduleTableHTML += "<tr><td colspan=\"5\"><a href=\"#\" id=\"btnAddModule\"><i class=\"fa fa-plus\"></i>&nbsp;&nbsp;Add module</a></td></tr>";
-					$("#tblModules").html(moduleTableHTML);
-					
-					$("#btnAddModule").unbind().click(function(e) {
-						e.preventDefault();
-						$("#mdlAddModule").modal();
-					});
-					$(".edit-module").click(function(e) {
-						e.preventDefault();
-						editModule = $(this).attr('id');
-						$("#mdlEditModule").modal();
-						for(var i = 0; i < modules.length; i++) {
-							if(modules[i].id == $(this).attr('id')) {
-								$("#txtEditModuleCode").val(modules[i].moduleCode);
-								$("#txtEditModuleName").val(modules[i].moduleName);
-								$("#txtEditRequiredGrades").val(modules[i].requiredGrades);
-							}
-						}
-					});
-					$("#btnEditModuleSave").unbind().click(function() {
-						var moduleCode = $("#txtEditModuleCode").val();
-						var moduleName = $("#txtEditModuleName").val();
-						var requiredGrades = $("#txtEditRequiredGrades").val();
-						
-						if(!moduleCode.trim()) {
-							$("#txtEditModuleCode")[0].setCustomValidity("Please enter the module's code");
-							$("#txtEditModuleCode")[0].reportValidity();
-							return;
-						}
-						else if(!moduleName.trim()) {
-							$("#txtEditModuleName")[0].setCustomValidity("Please enter the module's name");
-							$("#txtEditModuleName")[0].reportValidity();
-							return;
-						}
-						else if(!requiredGrades.trim()) {
-							$("#txtEditRequiredGrades")[0].setCustomValidity("Please enter the required grades to pass");
-							$("#txtEditRequiredGrades")[0].reportValidity();
-							return;
-						}
-						$.post("scripts/EditModuleListItem.php", { id: editModule, moduleCode: moduleCode, moduleName: moduleName, requiredGrades: requiredGrades }, function(resultData) {
-							var resultObject = JSON.parse(resultData);
-								
-							if(resultObject.success) {
-								$("#mdlEditModule").modal('hide');
-								loadModules(selected);
-							}
-						});
-					});
-					
-					$(".delete-module").click(function(e) {
-						e.preventDefault();
-						deleteModule = $(this).attr('id');
-						$("#mdlDeleteModule").modal();
-					});
-					$("#btnDeleteModuleConfirm").unbind().click(function() {
-						$.post("scripts/DeleteModule.php", { id: deleteModule }, function(resultData) {
-							var resultObject = JSON.parse(resultData);
-								
-							if(resultObject.success) {
-								$("#mdlDeleteModule").modal('hide');
-								loadModules(selected);
-							}
-						});
-					});
-					
-					$("#btnAddModuleSave").unbind().click(function() {
-						var moduleCode = $("#txtModuleCode").val();
-						var moduleName = $("#txtModuleName").val();
-						var requiredGrades = $("#txtRequiredGrades").val();
-						
-						if(!moduleCode.trim()) {
-							$("#txtModuleCode")[0].setCustomValidity("Please enter the module's code");
-							$("#txtModuleCode")[0].reportValidity();
-							return;
-						}
-						else if(!moduleName.trim()) {
-							$("#txtModuleName")[0].setCustomValidity("Please enter the module's name");
-							$("#txtModuleName")[0].reportValidity();
-							return;
-						}
-						else if(!requiredGrades.trim()) {
-							$("#txtRequiredGrades")[0].setCustomValidity("Please enter the required grades to pass");
-							$("#txtRequiredGrades")[0].reportValidity();
-							return;
-						}
-						$.post("scripts/AddModuleListItem.php", { listId: selected, moduleCode: moduleCode, moduleName: moduleName, requiredGrades: requiredGrades }, function(resultData) {
-							var resultObject = JSON.parse(resultData);
-								
-							if(resultObject.success) {
-								$("#mdlAddModule").modal('hide');
-								loadModules(selected);
-							}
-						});
-					});
-				}
-			});
-		}
-		
-		function loadLists() {
-			$.get("scripts/GetLists.php", function(data) {
+		function loadTracks() {
+			$.get("scripts/GetTracks.php?pillar=" + pillar, function(data) {
 				var response = JSON.parse(data); // Parse the response from JSON
 				
 				if(response.success) {
-					var listListHTML = "";
-					for(var i = 0; i < response.lists.length; i++) {
-						listListHTML += "<tr><td id=\"" + response.lists[i].id + "\">" + response.lists[i].name + "<span class=\"float-md-right\"><a href=\"#\" id=\"" + response.lists[i].id + "\" class=\"edit-list\"><i class=\"fa fa-pencil\"></i></a>&nbsp;&nbsp;<a href=\"#\" id=\"" + response.lists[i].id + "\" class=\"delete-list\"><i class=\"fa fa-times\"></i></a></span></td></tr>";
+					var detailTracks = "";
+					for(var i = 0; i < response.tracks.length; i++) {
+						detailTracks += "<tr><td>" . response.tracks[i] "</td></tr>";
 					}
-					listListHTML += "<tr><td id=\"btnAddModuleList\"><i class=\"fa fa-plus\" aria-hidden=\"true\"></i> Add Module List</td></tr>";
 					
-					$("#detailList").html(listListHTML);
+					$("#detailTracks").html(detailTracks);
 					
 					if(response.lists.length > 0) {
-						lists = response.lists;
 						select(response.lists[0].id);
 					}
 					
 					$("#detailList > tr > td").click(function() {
-						var listId = $(this).attr('id');
-						if(listId == "btnAddModuleList") {
-							return;
-						}
+						var trackId = $(this).attr('id');
 						
-						select(listId);
+						select(trackId);
 					});
-					$("#btnAddModuleList").click(function() {
-						$("#mdlAddModuleList").modal();
-					});
-					$("#btnAddModuleListSave").unbind().click(function() {
-						var listName = $("#txtModuleListName").val();
-						if(listName.trim()) {
-							$.post("scripts/AddList.php", { name: listName }, function(resultData) {
-								var resultObject = JSON.parse(resultData);
-								
-								if(resultObject.success) {
-									$("#mdlAddModuleList").modal('hide');
-									loadLists();
-								}
-								else {
-									$("#txtModuleListName")[0].setCustomValidity(resultObject.message);
-									$("#txtModuleListName")[0].reportValidity();
-								}
-							});
-						}
-						else {
-							$("#txtModuleListName")[0].setCustomValidity("Please enter a name for the list");
-							$("#txtModuleListName")[0].reportValidity();
-						}
-					});
-					$(".delete-list").click(function(e) {
+					$(".delete-track-core").click(function(e) {
 						e.preventDefault();
-						deleteList = $(this).attr('id');
-						$("#mdlDeleteList").modal();
+						//deleteList = $(this).attr('id');
+						$("#mdlDeleteTrackCore").modal();
 					});
-					$("#btnDeleteListConfirm").unbind().click(function() {
-						$.post("scripts/DeleteList.php", { listId: deleteList }, function(resultData) {
+					$("#btnDeleteTrackCoreConfirm").unbind().click(function() {
+						/*$.post("scripts/DeleteList.php", { listId: deleteList }, function(resultData) {
 							var resultObject = JSON.parse(resultData);
 								
 							if(resultObject.success) {
 								$("#mdlDeleteList").modal('hide');
 								loadLists();
 							}
-						});
-					});
-					
-					$(".edit-list").click(function(e) {
-						e.preventDefault();
-						editList = $(this).attr('id');
-						$("#mdlEditModuleList").modal();
-						for(var i = 0; i < lists.length; i++) {
-							if(lists[i].id == $(this).attr('id')) {
-								$("#txtModuleEditListName").val(lists[i].name);
-							}
-						}
-					});
-					$("#btnEditModuleListSave").unbind().click(function() {
-						name = $("#txtModuleEditListName").val();
-						$.post("scripts/EditList.php", { listId: editList, name: name }, function(resultData) {
-							var resultObject = JSON.parse(resultData);
-								
-							if(resultObject.success) {
-									$("#mdlEditModuleList").modal('hide');
-									loadLists();
-								}
-								else {
-									$("#txtModuleEditListName")[0].setCustomValidity(resultObject.message);
-									$("#txtModuleEditListName")[0].reportValidity();
-								}
-						});
+						});*/
 					});
 				}
 			});
 		}
 		
 		$(document).ready(function() {
-			$("#navManage").addClass("active");
-			loadLists();
+			$("#navPillars").addClass("active");
+			loadTracks();
 			
 			$("#tabTracks").click(function(e) {
 				e.preventDefault();
@@ -561,6 +271,12 @@
 			});
 			
 			$("#tabTracks").click();
+			
+			$("#btnAddTrack").click(function() {
+				$("#mdlAddTrack").modal();
+			});
+			
+			$("#pillarName").html(pillar);
 		});
 	</script>
 </body>
