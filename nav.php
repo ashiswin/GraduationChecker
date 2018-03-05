@@ -20,6 +20,7 @@
 				<a class="dropdown-item" href="pillars.php?pillar=ESD">ESD</a>
 				</div>
 			</li>
+			<li id="navLogout" class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>
 		</ul>
 	</div>
 </nav>

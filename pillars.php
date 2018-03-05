@@ -60,7 +60,7 @@
 	<?php require_once 'nav.php' ?>
 	<div class="container-fluid" style="margin-top: 2vh;">
 		<div class="row">
-			<span style="font-size: 5em; margin-left: 2vh;" id="pillarName"></span><i class="fa fa-pencil"></i>
+			<span style="font-size: 5em; margin-left: 2vh;" id="pillarName"></span>
 		</div>
 	</div>
 	<!-- UI element for top selector (Details, Stats, Attendees) -->
@@ -165,6 +165,33 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" id="btnAddModuleSave">Add</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="mdlAddTrack">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Add Track</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-2">
+							Track Name: 
+						</div>
+						<div class="col-md-10">
+							<input class="form-control" type="text" name="txtTrackName" id="txtTrackName">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="btnAddTrackConfirm">Add</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
