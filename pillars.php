@@ -131,10 +131,10 @@
 						<div class="col-md-1">
 							<input type="number" class="form-control" id="txtElectives" name="txtElectives">
 						</div>
-						<div class="col-md-12">
+						<div class="col-md-11">
 							of the following electives is required.
 						</div>
-					<div>
+					</div>
 					<table class="table table-hover">
 						<colgroup>
 							<col span="1" style="width: 5%;">
