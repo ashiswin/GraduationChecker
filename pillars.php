@@ -68,7 +68,7 @@
 		<li class="nav-item"><a href="#" class="nav-link" id="tabProperties">Properties</a></li>
 		<li class="nav-item"><a href="#" class="nav-link active" id="tabTracks">Tracks</a></li>
 	</ul>
-	<div class="container-fluid">
+	<div class="container-fluid" style="margin-top: 2vh">
 		<div id="paneProperties" class="row main-content">
 			<!-- Create side pane with events -->
 			<div class="col-md-4 col-xs-4">
@@ -96,7 +96,7 @@
 			<div class="col-md-4 col-xs-4">
 				<div class="scrollable">
 					<table class="table table-hover" id="tblTracks">
-						<thead><tr><td><i class="fa fa-plus"> Add Track</td></tr></thead>
+						<thead><tr><td><a href="#" id="btnAddTrack"><i class="fa fa-plus"></i> Add Track</a></td></tr></thead>
 						<tbody class="detailList" id="detailTracks">
 						</tbody>
 					</table>
@@ -108,6 +108,12 @@
 					<h3>Core Modules <span class="float-md-right"><button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Module</button></span></h3>
 					<br>
 					<table class="table table-hover">
+						<colgroup>
+							<col span="1" style="width: 5%;">
+							<col span="1" style="width: 10%;">
+							<col span="1" style="width: 80%;">
+							<col span="1" style="width: 5%;">
+						</colgroup>
 						<thead>
 							<tr>
 								<th>#</th>
