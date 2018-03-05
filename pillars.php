@@ -240,6 +240,7 @@
 				
 				if(response.success) {
 					var detailTracks = "";
+					console.log(response.tracks);
 					for(var i = 0; i < response.tracks.length; i++) {
 						detailTracks += "<tr><td>" + response.tracks[i] + "</td></tr>";
 					}
