@@ -138,39 +138,6 @@
 		</div>
 	</div>
 	
-	<div class="modal" id="mdlAddModule">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Add module</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<table style="border: 0">
-						<tr>
-							<td><label for="txtModuleCode" class="control-label mb-2 mr-sm-2 mb-sm-0">Module Code:</label></td>
-							<td><input type="text" class="form-control" name="txtModuleCode" id="txtModuleCode" placeholder="XX.XXX" /></td>
-						</tr>
-						<tr>
-							<td><label for="txtModuleName" class="control-label mb-2 mr-sm-2 mb-sm-0">Module Name:</label></td>
-							<td><input type="text" class="form-control" name="txtModuleName" id="txtModuleName" /></td>
-						</tr>
-						<tr>
-							<td><label for="txtRequiredGrades" class="control-label mb-2 mr-sm-2 mb-sm-0">Required Grades:</label></td>
-							<td><input type="text" class="form-control" name="txtRequiredGrades" id="txtRequiredGrades" value="A,B,C,D" /></td>
-						</tr>
-					</table>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" id="btnAddModuleSave">Add</button>
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	
 	<div class="modal" id="mdlAddTrack">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -208,10 +175,20 @@
 					</button>
 				</div>
 				<div class="modal-body">
+					<ul class="nav nav-pills" style="margin-top: 2vh; margin-left: 2vh;">
+						<li class="nav-item"><a href="#" class="nav-link" id="tabTrackCoreModules">Modules</a></li>
+						<li class="nav-item"><a href="#" class="nav-link active" id="tabTrackCoreLists">Lists</a></li>
+					</ul>
+					<br>
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
-						<input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" id="txtAddTrackCoreSearch">
+						<input type="text" class="form-control" placeholder="Module code, Module name..." aria-describedby="basic-addon1" id="txtAddTrackCoreSearch">
 					</div>
+					<br>
+					<table class="table table-hover" id="tblTrackCoreModules">
+					</table>
+					<table class="table table-hover" id="tblTrackCoreLists">
+					</table>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" id="btnAddTrackCoreConfirm">Add</button>
@@ -353,7 +330,30 @@
 				});
 			});
 			$("#btnAddTrackCore").click(function() {
+				$("#tblTrackCoreLists").hide();
+				$.get("scripts/GetLists.php", function(resultData) {
+					var resultObject = JSON.parse(resultData);
+						
+					if(resultObject.success) {
+						var tblTrackCoreLists = "";
+						for(var i = 0; i < resultObject.lists.length; i++) {
+							tblTrackCoreLists += "<tr><td>" + resultObject.lists[i].name + "</td></tr>";
+						}
+						$("#tblTrackCoreLists").html(tblTrackCoreLists);
+					}
+				});
+				
 				$("#mdlAddTrackCore").modal();
+				$("#tabTrackCoreModules").click(function(e) {
+					e.preventDefault();
+					$("#tblTrackCoreLists").hide();
+					$("#tblTrackCoreModules").show();
+				});
+				$("#tabTrackCoreLists").click(function(e) {
+					e.preventDefault();
+					$("#tblTrackCoreLists").show();
+					$("#tblTrackCoreModules").hide();
+				});
 			});
 			
 			$("#pillarName").html(pillar);
