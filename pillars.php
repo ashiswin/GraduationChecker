@@ -177,7 +177,7 @@
 				<div class="modal-body">
 					<ul class="nav nav-pills" style="margin-top: 2vh; margin-left: 2vh;">
 						<li class="nav-item"><a href="#" class="nav-link" id="tabTrackCoreModules">Modules</a></li>
-						<li class="nav-item"><a href="#" class="nav-link active" id="tabTrackCoreLists">Lists</a></li>
+						<li class="nav-item"><a href="#" class="nav-link" id="tabTrackCoreLists">Lists</a></li>
 					</ul>
 					<br>
 					<div class="input-group">
@@ -346,11 +346,17 @@
 				$("#mdlAddTrackCore").modal();
 				$("#tabTrackCoreModules").click(function(e) {
 					e.preventDefault();
+					$("#tabTrackCoreModules").addClass("active");
+					$("#tabTrackCoreLists").removeClass("active");
+					
 					$("#tblTrackCoreLists").hide();
 					$("#tblTrackCoreModules").show();
 				});
 				$("#tabTrackCoreLists").click(function(e) {
 					e.preventDefault();
+					$("#tabTrackCoreModules").removeClass("active");
+					$("#tabTrackCoreLists").addClass("active");
+					
 					$("#tblTrackCoreLists").show();
 					$("#tblTrackCoreModules").hide();
 				});
