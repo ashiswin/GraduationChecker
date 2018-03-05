@@ -240,15 +240,11 @@
 				
 				if(response.success) {
 					var detailTracks = "";
-					console.log(response);
-					console.log(response.tracks.length);
 					for(var i = 0; i < response.tracks.length; i++) {
-						console.log(response.tracks[i]);
 						detailTracks += "<tr><td>" + response.tracks[i].name + "</td></tr>";
 					}
 					
 					$("#detailTracks").html(detailTracks);
-					console.log(detailTracks);
 					if(response.tracks.length > 0) {
 						select(response.tracks[0].id);
 					}
