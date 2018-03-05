@@ -246,8 +246,8 @@
 					
 					$("#detailTracks").html(detailTracks);
 					
-					if(response.lists.length > 0) {
-						select(response.lists[0].id);
+					if(response.tracks.length > 0) {
+						select(response.tracks[0].id);
 					}
 					
 					$("#detailList > tr > td").click(function() {
