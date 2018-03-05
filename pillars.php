@@ -182,11 +182,11 @@
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-md-2">
+						<div class="col-md-4">
 							Track Name: 
 						</div>
-						<div class="col-md-10">
-							<input class="form-control" type="text" name="txtTrackName" id="txtTrackName">
+						<div class="col-md-8">
+							<input class="form-control" type="text" name="txtAddTrackName" id="txtAddTrackName">
 						</div>
 					</div>
 				</div>
@@ -301,6 +301,23 @@
 			
 			$("#btnAddTrack").click(function() {
 				$("#mdlAddTrack").modal();
+			});
+			$("#btnAddTrackConfirm").click(function() {
+				var name = $("#txtAddTrackName").val();
+				if(!name || name.length == 0) {
+					$("#txtAddTrackName")[0].setCustomValidity("Please enter a track name");
+		                	$("#txtAddTrackName")[0].reportValidity();
+					
+					return;
+				}
+				$.post("scripts/AddTrack.php", { name: name, pillar: pillar }, function(resultData) {
+					var resultObject = JSON.parse(resultData);
+						
+					if(resultObject.success) {
+						$("#mdlAddTrack").modal('hide');
+						loadTracks();
+					}
+				});
 			});
 			
 			$("#pillarName").html(pillar);
