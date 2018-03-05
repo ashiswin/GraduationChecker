@@ -214,7 +214,7 @@
 				if(response.success) {
 					var detailTracks = "";
 					for(var i = 0; i < response.tracks.length; i++) {
-						detailTracks += "<tr><td>" . response.tracks[i] "</td></tr>";
+						detailTracks += "<tr><td>" + response.tracks[i] + "</td></tr>";
 					}
 					
 					$("#detailTracks").html(detailTracks);
