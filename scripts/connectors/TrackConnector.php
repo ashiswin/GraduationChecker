@@ -6,6 +6,7 @@
 		public static $COLUMN_ID = "id";
 		public static $COLUMN_NAME = "name";
 		public static $COLUMN_PILLAR = "pillar";
+		public static $COLUMN_ELECTIVES = "electives";
 		
 		private $createStatement = NULL;
 		private $selectStatement = NULL;

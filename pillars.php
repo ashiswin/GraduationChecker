@@ -239,6 +239,7 @@
 				var response = JSON.parse(data); // Parse the response from JSON
 				
 				if(response.success) {
+					console.log(response);
 				}
 			});
 		}
