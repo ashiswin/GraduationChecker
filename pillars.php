@@ -96,7 +96,7 @@
 			<div class="col-md-4 col-xs-4">
 				<div class="scrollable">
 					<table class="table table-hover" id="tblTracks">
-						<thead><tr><td><a href="#" id="btnAddTrack"><i class="fa fa-plus"></i> Add Track</a></td></tr></thead>
+						<thead><a href="#" id="btnAddTrack"><i class="fa fa-plus"></i> Add Track</a></thead>
 						<tbody class="detailList" id="detailTracks">
 						</tbody>
 					</table>
@@ -105,13 +105,13 @@
 			<!-- Begin main detail view -->
 			<div class="col-md-8 col-xs-8 scrollable" style="border-left: 1px solid #CCCCCC;">
 				<div id="mainContentTracks" style="margin-top: 2vh">
-					<h3>Core Modules <span class="float-md-right"><button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Module</button></span></h3>
+					<h3>Core Modules <span class="float-md-right"><button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Core</button></span></h3>
 					<br>
 					<table class="table table-hover">
 						<colgroup>
 							<col span="1" style="width: 5%;">
-							<col span="1" style="width: 10%;">
-							<col span="1" style="width: 80%;">
+							<col span="1" style="width: 20%;">
+							<col span="1" style="width: 70%;">
 							<col span="1" style="width: 5%;">
 						</colgroup>
 						<thead>
@@ -123,6 +123,34 @@
 							</tr>
 						</thead>
 						<tbody class="tblTrackCore"></tbody>
+					</table>
+					<br>
+					<h3>Elective Modules <span class="float-md-right"><button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Elective</button></span></h3>
+					<br>
+					<div class="row">
+						<div class="col-md-1">
+							<input type="number" class="form-control" id="txtElectives" name="txtElectives">
+						</div>
+						<div class="col-md-12">
+							of the following electives is required.
+						</div>
+					<div>
+					<table class="table table-hover">
+						<colgroup>
+							<col span="1" style="width: 5%;">
+							<col span="1" style="width: 20%;">
+							<col span="1" style="width: 70%;">
+							<col span="1" style="width: 5%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Module Code</th>
+								<th>Module Name</th>
+								<th><i class="fa fa-times"></i></th>
+							</tr>
+						</thead>
+						<tbody class="tblTrackElectives"></tbody>
 					</table>
 				</div>
 			</div>
