@@ -198,7 +198,7 @@
 		</div>
 	</div>
 	
-	<div class="modal" id="mdlAddCore">
+	<div class="modal" id="mdlAddTrackCore">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
