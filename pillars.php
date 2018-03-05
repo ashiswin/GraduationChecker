@@ -241,6 +241,7 @@
 				if(response.success) {
 					var detailTracks = "";
 					for(var i = 0; i < response.tracks.length; i++) {
+						console.log(response.tracks[i]);
 						detailTracks += "<tr><td>" + response.tracks[i].name + "</td></tr>";
 					}
 					
