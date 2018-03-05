@@ -234,6 +234,15 @@
 			loadTrack(trackId);
 		}
 		
+		function loadTrack(trackId) {
+			$.get("scripts/GetTrack.php?id=" + trackId, function(data) {
+				var response = JSON.parse(data); // Parse the response from JSON
+				
+				if(response.success) {
+				}
+			});
+		}
+		
 		function loadTracks() {
 			$.get("scripts/GetTracks.php?pillar=" + pillar, function(data) {
 				var response = JSON.parse(data); // Parse the response from JSON
