@@ -552,8 +552,10 @@
 			// Loop through all table rows, and hide those who don't match the search query
 			for (i = 0; i < tr.length; i++) {
 				td = tr[i].getElementsByTagName("td")[0];
+				console.log(tr[i].innerHTML.toUpperCase());
 				if (tr[i].innerHTML) {
 					if (tr[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+						console.log(tr[i].innerHTML.toUpperCase().indexOf(filter));
 						tr[i].style.display = "";
 					} else {
 						tr[i].style.display = "none";
