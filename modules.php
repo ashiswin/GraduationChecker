@@ -317,7 +317,7 @@
 						$("#txtEditModuleHidden").val($(this).attr('id'));
 						$("#mdlEditModule").modal();
 						for(var i = 0; i < modules.length; i++) {
-							if(modules[i].moduelCode == $(this).attr('id')) {
+							if(modules[i].moduleCode == $(this).attr('id')) {
 								$("#txtEditModuleCode").val(modules[i].moduleCode);
 								$("#txtEditModuleName").val(modules[i].moduleName);
 								$("#txtEditRequiredGrades").val(modules[i].requiredGrades);
