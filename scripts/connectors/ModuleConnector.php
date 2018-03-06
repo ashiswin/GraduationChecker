@@ -19,15 +19,15 @@
 			
 			$this->mysqli = $mysqli;
 			
-			$this->createStatement = $mysqli->prepare("INSERT INTO " . ModuleListItemsConnector::$TABLE_NAME . "(`" . ModuleListItemsConnector::$COLUMN_MODULECODE . "`, `" . ModuleListItemsConnector::$COLUMN_MODULENAME . "`, `" . ModuleListItemsConnector::$COLUMN_REQUIREDGRADES . "`) VALUES(?,?,?)");
+			$this->createStatement = $mysqli->prepare("INSERT INTO " . ModuleConnector::$TABLE_NAME . "(`" . ModuleConnector::$COLUMN_MODULECODE . "`, `" . ModuleConnector::$COLUMN_MODULENAME . "`, `" . ModuleConnector::$COLUMN_REQUIREDGRADES . "`) VALUES(?,?,?)");
 			
-			$this->selectStatement = $mysqli->prepare("SELECT * FROM `" . ModuleListItemsConnector::$TABLE_NAME . "` WHERE `" . ModuleListItemsConnector::$COLUMN_MODULECODE . "` = ?");
+			$this->selectStatement = $mysqli->prepare("SELECT * FROM `" . ModuleConnector::$TABLE_NAME . "` WHERE `" . ModuleConnector::$COLUMN_MODULECODE . "` = ?");
 
-			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM `" . ModuleListItemsConnector::$TABLE_NAME);
+			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM `" . ModuleConnector::$TABLE_NAME);
 
-			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . ModuleListItemsConnector::$TABLE_NAME . " WHERE `" . ModuleListItemsConnector::$COLUMN_MODULECODE . "` = ?");
+			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . ModuleConnector::$TABLE_NAME . " WHERE `" . ModuleConnector::$COLUMN_MODULECODE . "` = ?");
 
-			$this->updateStatement = $mysqli->prepare("UPDATE " . ModuleListItemsConnector::$TABLE_NAME . " SET `" . ModuleListItemsConnector::$COLUMN_MODULECODE . "` = ?, `" . ModuleListItemsConnector::$COLUMN_MODULENAME . "` = ?, `" . ModuleListItemsConnector::$COLUMN_REQUIREDGRADES . "` = ? WHERE `" . ModuleListItemsConnector::$COLUMN_MODULECODE . "` = ?");
+			$this->updateStatement = $mysqli->prepare("UPDATE " . ModuleConnector::$TABLE_NAME . " SET `" . ModuleConnector::$COLUMN_MODULECODE . "` = ?, `" . ModuleConnector::$COLUMN_MODULENAME . "` = ?, `" . ModuleConnector::$COLUMN_REQUIREDGRADES . "` = ? WHERE `" . ModuleConnector::$COLUMN_MODULECODE . "` = ?");
                 
 		}
 		
