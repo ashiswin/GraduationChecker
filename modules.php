@@ -102,7 +102,7 @@
 				<div id="mainContent">
 					<table class="table table-hover">
 						<thead><tr><th>#</th><th>Module</th><th>Required Grades</th><th><i class="fa fa-pencil"></i></th><th><i class="fa fa-times"></i></th></tr></thead>
-						<tbody id="tblModules">
+						<tbody id="tblListModules">
 						</tbody>
 					</table>
 				</div>
@@ -297,7 +297,7 @@
 						moduleTableHTML += "<tr><td>" + (i + 1) + "</td><td>" + resultObject.modules[i].moduleCode + " - " + resultObject.modules[i].moduleName + "</td><td>" + resultObject.modules[i].requiredGrades + "</td><td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"edit-module\"><i class=\"fa fa-pencil\"></i></a></td><td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"delete-module\"><i class=\"fa fa-times\"></i></td></a></tr>";
 					}
 					
-					$("#tblModules").html(moduleTableHTML);
+					$("#tblListModules").html(moduleTableHTML);
 					
 					$(".edit-module").click(function(e) {
 						e.preventDefault();
