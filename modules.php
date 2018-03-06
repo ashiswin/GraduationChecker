@@ -242,6 +242,7 @@
 							<td><input type="text" class="form-control" name="txtEditRequiredGrades" id="txtEditRequiredGrades" value="A,B,C,D" /></td>
 						</tr>
 					</table>
+					<input type="hidden" id="txtEditModuleHidden" name="txtEditModuleHidden">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" id="btnEditModuleSave">Save</button>
@@ -263,6 +264,7 @@
 				<div class="modal-body">
 					<p>Are you sure you want to delete this module?</p>
 					<p class="text-warning" style="font-weight: bold">THIS ACTION CANNOT BE UNDONE!</p>
+					<input type="hidden" id="txtDeleteModuleHidden" name="txtDeleteModuleHidden">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" id="btnDeleteModuleConfirm">Delete</button>
@@ -303,8 +305,8 @@
 						moduleTableHTML += "<td>" + resultObject.modules[i].moduleCode + "</td>";
 						moduleTableHTML += "<td>" + resultObject.modules[i].moduleName + "</td>";
 						moduleTableHTML += "<td>" + resultObject.modules[i].requiredGrades + "</td>";
-						moduleTableHTML += "<td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"edit-module\"><i class=\"fa fa-pencil\"></i></a></td>";
-						moduleTableHTML += "<td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"delete-module\"><i class=\"fa fa-times\"></i></a></td>";
+						moduleTableHTML += "<td><a href=\"#\" id=\"" + resultObject.modules[i].moduleCode + "\" class=\"edit-module\"><i class=\"fa fa-pencil\"></i></a></td>";
+						moduleTableHTML += "<td><a href=\"#\" id=\"" + resultObject.modules[i].moduleCode + "\" class=\"delete-module\"><i class=\"fa fa-times\"></i></a></td>";
 						moduleTableHTML += "</tr>";
 					}
 					
@@ -312,10 +314,10 @@
 					
 					$(".edit-module").click(function(e) {
 						e.preventDefault();
-						editModule = $(this).attr('id');
+						$("#txtEditModuleHidden").val($(this).attr('id'));
 						$("#mdlEditModule").modal();
 						for(var i = 0; i < modules.length; i++) {
-							if(modules[i].id == $(this).attr('id')) {
+							if(modules[i].moduelCode == $(this).attr('id')) {
 								$("#txtEditModuleCode").val(modules[i].moduleCode);
 								$("#txtEditModuleName").val(modules[i].moduleName);
 								$("#txtEditRequiredGrades").val(modules[i].requiredGrades);
@@ -323,6 +325,7 @@
 						}
 					});
 					$("#btnEditModuleSave").unbind().click(function() {
+						var editCode = $("#txtEditModuleHidden").val();
 						var moduleCode = $("#txtEditModuleCode").val();
 						var moduleName = $("#txtEditModuleName").val();
 						var requiredGrades = $("#txtEditRequiredGrades").val();
@@ -342,28 +345,28 @@
 							$("#txtEditRequiredGrades")[0].reportValidity();
 							return;
 						}
-						$.post("scripts/EditModuleListItem.php", { id: editModule, moduleCode: moduleCode, moduleName: moduleName, requiredGrades: requiredGrades }, function(resultData) {
+						$.post("scripts/EditModule.php", { id: editCode, moduleCode: moduleCode, moduleName: moduleName, requiredGrades: requiredGrades }, function(resultData) {
 							var resultObject = JSON.parse(resultData);
 								
 							if(resultObject.success) {
 								$("#mdlEditModule").modal('hide');
-								loadListModules(selected);
+								loadModules(selected);
 							}
 						});
 					});
 					
 					$(".delete-module").click(function(e) {
 						e.preventDefault();
-						deleteModule = $(this).attr('id');
+						$("#txtDeleteModuleHidden").val($(this).attr('id'));
 						$("#mdlDeleteModule").modal();
 					});
 					$("#btnDeleteModuleConfirm").unbind().click(function() {
-						$.post("scripts/DeleteModule.php", { id: deleteModule }, function(resultData) {
+						$.post("scripts/DeleteModule.php", { id: $("#txtDeleteModuleHidden").val() }, function(resultData) {
 							var resultObject = JSON.parse(resultData);
 								
 							if(resultObject.success) {
 								$("#mdlDeleteModule").modal('hide');
-								loadListModules(selected);
+								loadModules(selected);
 							}
 						});
 					});
@@ -372,7 +375,7 @@
 		}
 		
 		function loadListModules(listId) {
-			$.get("scripts/GetModuleListItems.php?listId=" + listId, function(resultData) {
+			/*$.get("scripts/GetModuleListItems.php?listId=" + listId, function(resultData) {
 				var resultObject = JSON.parse(resultData);
 				
 				if(resultObject.success) {
@@ -443,7 +446,7 @@
 						});
 					});
 				}
-			});
+			});*/
 		}
 		
 		function loadLists() {
@@ -553,7 +556,7 @@
 			for (i = 0; i < tr.length; i++) {
 				var tds = tr[i].getElementsByTagName("td");
 				if(!tds) continue;
-				for(var j = 1; j < tds.length - 2; j++) {
+				for(var j = 1; j < tds.length - 3; j++) {
 					td = tds[j];
 					if (td) {
 						if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {

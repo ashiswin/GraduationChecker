@@ -1,12 +1,12 @@
 <?php
 	require_once "utils/database.php";
-	require_once "connectors/ModuleListItemsConnector.php";
+	require_once "connectors/ModuleConnector.php";
 	
-	$id = intval($_POST['id']);
+	$id = intval($_POST['moduleCode']);
 	
-	$ModuleListItemsConnector = new ModuleListItemsConnector($conn);
+	$ModuleConnector = new ModuleConnector($conn);
 	
-	$response["success"] = $ModuleListItemsConnector->delete($id);
+	$response["success"] = $ModuleConnector->delete($id);
 	
 	echo(json_encode($response));
 ?>
