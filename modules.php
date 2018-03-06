@@ -74,7 +74,7 @@
 				</div>
 				<div class="col-md-3">
 					<button class="btn btn-primary float-right" id="btnAddModule"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Module</button>
-					<button class="btn btn-success float-right" id="btnUploadModule" style="margin-left: 2vh"><i class="fa fa-upload"></i>&nbsp;&nbsp;Upload Modules</button>
+					<button class="btn btn-success float-right" id="btnUploadModule" style="margin-right: 2vh"><i class="fa fa-upload"></i>&nbsp;&nbsp;Upload Modules</button>
 				</div>
 			</div>
 			<div class="row">
