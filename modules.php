@@ -64,8 +64,8 @@
 		<li class="nav-item"><a href="#" class="nav-link" id="tabModuleLists">Lists</a></li>
 	</ul>
 	<div class="container-fluid">
-		<div id="paneModules" class="row">
-			<div class="col-md-12">
+		<div id="paneModules">
+			<div class="row">
 				<div class="col-md-10">
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
@@ -76,11 +76,13 @@
 					<button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Module</button>
 				</div>
 			</div>
-			<table class="table table-hover">
-				<thead><tr><th>#</th><th>Module</th><th>Required Grades</th><th><i class="fa fa-pencil"></i></th><th><i class="fa fa-times"></i></th></tr></thead>
-				<tbody id="tblModules">
-				</tbody>
-			</table>
+			<div class="row">
+				<table class="table table-hover">
+					<thead><tr><th>#</th><th>Module</th><th>Required Grades</th><th><i class="fa fa-pencil"></i></th><th><i class="fa fa-times"></i></th></tr></thead>
+					<tbody id="tblModules">
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div id="paneModuleLists" class="row main-content">
 			<!-- Create side pane with events -->
