@@ -60,9 +60,8 @@
 	<?php require_once 'nav.php' ?>
 	<!-- UI element for top selector (Details, Stats, Attendees) -->
 	<ul class="nav nav-tabs" style="margin-top: 2vh; margin-left: 2vh;">
-		<li class="nav-item"><a href="#" class="nav-link" id="tabRuleSets">Rule Sets</a></li>
-		<li class="nav-item"><a href="#" class="nav-link active" id="tabRules">Rules</a></li>
-		<li class="nav-item"><a href="#" class="nav-link" id="tabModuleLists">Module Lists</a></li>
+		<li class="nav-item"><a href="#" class="nav-link" id="tabLists">Modules</a></li>
+		<li class="nav-item"><a href="#" class="nav-link" id="tabModuleLists">Lists</a></li>
 	</ul>
 	<div class="container-fluid">
 		<div id="paneModules" class="row main-content">
@@ -495,37 +494,22 @@
 				e.preventDefault();
 				
 				$("#paneModuleLists").show();
-				$("#paneRuleSets").hide();
-				$("#paneRules").hide();
+				$("#paneModules").hide();
 				
 				$("#tabModuleLists").addClass("active");
-				$("#tabRuleSets").removeClass("active");
-				$("#tabRules").removeClass("active");
+				$("#tabModules").removeClass("active");
 			});
-			$("#tabRuleSets").click(function(e) {
+			$("#tabModules").click(function(e) {
 				e.preventDefault();
 				
 				$("#paneModuleLists").hide();
-				$("#paneRuleSets").show();
-				$("#paneRules").hide();
+				$("#paneModules").show();
 				
 				$("#tabModuleLists").removeClass("active");
-				$("#tabRuleSets").addClass("active");
-				$("#tabRules").removeClass("active");
-			});
-			$("#tabRules").click(function(e) {
-				e.preventDefault();
-				
-				$("#paneModuleLists").hide();
-				$("#paneRuleSets").hide();
-				$("#paneRules").show();
-				
-				$("#tabModuleLists").removeClass("active");
-				$("#tabRuleSets").removeClass("active");
-				$("#tabRules").addClass("active");
+				$("#tabModules").addClass("active");
 			});
 			
-			$("#tabRules").click();
+			$("#tabModules").click();
 		});
 	</script>
 </body>
