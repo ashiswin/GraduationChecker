@@ -2,7 +2,7 @@
 	require_once "utils/database.php";
 	require_once "connectors/ModuleConnector.php";
 	
-	$id = intval($_POST['id']);
+	$id = $_POST['id'];
 	$moduleCode = trim($_POST['moduleCode']);
 	$moduleName = trim($_POST['moduleName']);
 	$requiredGrades = trim($_POST['requiredGrades']);
