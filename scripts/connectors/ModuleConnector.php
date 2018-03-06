@@ -1,9 +1,8 @@
 <?php
-	class ModuleListItemsConnector {
+	class ModuleConnector {
 		private $mysqli = NULL;
 		
 		public static $TABLE_NAME = "modules";
-		public static $COLUMN_ID = "id";
 		public static $COLUMN_MODULECODE = "moduleCode";
 		public static $COLUMN_MODULENAME = "moduleName";
 		public static $COLUMN_REQUIREDGRADES = "requiredGrades";
@@ -22,13 +21,13 @@
 			
 			$this->createStatement = $mysqli->prepare("INSERT INTO " . ModuleListItemsConnector::$TABLE_NAME . "(`" . ModuleListItemsConnector::$COLUMN_MODULECODE . "`, `" . ModuleListItemsConnector::$COLUMN_MODULENAME . "`, `" . ModuleListItemsConnector::$COLUMN_REQUIREDGRADES . "`) VALUES(?,?,?)");
 			
-			$this->selectStatement = $mysqli->prepare("SELECT * FROM `" . ModuleListItemsConnector::$TABLE_NAME . "` WHERE `" . ModuleListItemsConnector::$COLUMN_ID . "` = ?");
+			$this->selectStatement = $mysqli->prepare("SELECT * FROM `" . ModuleListItemsConnector::$TABLE_NAME . "` WHERE `" . ModuleListItemsConnector::$COLUMN_MODULECODE . "` = ?");
 
 			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM `" . ModuleListItemsConnector::$TABLE_NAME);
 
-			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . ModuleListItemsConnector::$TABLE_NAME . " WHERE `" . ModuleListItemsConnector::$COLUMN_ID . "` = ?");
+			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . ModuleListItemsConnector::$TABLE_NAME . " WHERE `" . ModuleListItemsConnector::$COLUMN_MODULECODE . "` = ?");
 
-			$this->updateStatement = $mysqli->prepare("UPDATE " . ModuleListItemsConnector::$TABLE_NAME . " SET `" . ModuleListItemsConnector::$COLUMN_MODULECODE . "` = ?, `" . ModuleListItemsConnector::$COLUMN_MODULENAME . "` = ?, `" . ModuleListItemsConnector::$COLUMN_REQUIREDGRADES . "` = ? WHERE `" . ModuleListItemsConnector::$COLUMN_ID . "` = ?");
+			$this->updateStatement = $mysqli->prepare("UPDATE " . ModuleListItemsConnector::$TABLE_NAME . " SET `" . ModuleListItemsConnector::$COLUMN_MODULECODE . "` = ?, `" . ModuleListItemsConnector::$COLUMN_MODULENAME . "` = ?, `" . ModuleListItemsConnector::$COLUMN_REQUIREDGRADES . "` = ? WHERE `" . ModuleListItemsConnector::$COLUMN_MODULECODE . "` = ?");
                 
 		}
 		
@@ -38,7 +37,7 @@
 		}
 		
 		public function select($id) {
-			$this->selectStatement->bind_param("i", $id);
+			$this->selectStatement->bind_param("s", $id);
 			if(!$this->selectStatement->execute()) return false; // if the query didn't execute, return false
 
 			$result = $this->selectStatement->get_result();
@@ -57,14 +56,14 @@
 		}
 		
 		public function update($moduleCode, $moduleName, $requiredGrades, $id) {
-			$this->updateStatement->bind_param("sssi", $moduleCode, $moduleName, $requiredGrades, $id);
+			$this->updateStatement->bind_param("ssss", $moduleCode, $moduleName, $requiredGrades, $id);
 			
 			if(!$this->updateStatement->execute()) return false; // if the query didn't execute, return false
 			return true;
 		}
 		
 		public function delete($id) {
-			$this->deleteStatement->bind_param("i", $id);
+			$this->deleteStatement->bind_param("s", $id);
 			if(!$this->deleteStatement->execute()) return false; // if the query didn't execute, return false
 			
 			return true;
