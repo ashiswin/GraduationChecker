@@ -2,7 +2,7 @@
 	require_once "utils/database.php";
 	require_once "connectors/ModuleConnector.php";
 	
-	$id = intval($_POST['moduleCode']);
+	$id = intval($_POST['id']);
 	
 	$ModuleConnector = new ModuleConnector($conn);
 	

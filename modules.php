@@ -350,7 +350,7 @@
 								
 							if(resultObject.success) {
 								$("#mdlEditModule").modal('hide');
-								loadModules(selected);
+								loadModules();
 							}
 						});
 					});
@@ -366,7 +366,7 @@
 								
 							if(resultObject.success) {
 								$("#mdlDeleteModule").modal('hide');
-								loadModules(selected);
+								loadModules();
 							}
 						});
 					});
