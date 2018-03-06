@@ -293,7 +293,7 @@
 			loadListModules(listId);
 		}
 		
-		function loadListModules(listId) {
+		function loadModules() {
 			$.get("scripts/GetModules.php", function(resultData) {
 				var resultObject = JSON.parse(resultData);
 				
@@ -562,6 +562,7 @@
 			});
 			
 			$("#tabModules").click();
+			loadModules();
 			
 			$("#btnAddModule").unbind().click(function(e) {
 				e.preventDefault();
