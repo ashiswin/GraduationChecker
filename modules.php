@@ -69,11 +69,11 @@
 				<div class="col-md-10">
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
-						<input type="text" class="form-control" placeholder="Module code, Module name..." aria-describedby="basic-addon1" id="txtAddTrackCoreSearch">
+						<input type="text" class="form-control" placeholder="Module code, Module name..." aria-describedby="basic-addon1" id="txtModulesSearch" onkeyup="filterModules()">
 					</div>
 				</div>
 				<div class="col-md-2">
-					<button class="btn btn-primary" id="btnAddModule"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Module</button>
+					<button class="btn btn-primary float-right" id="btnAddModule"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Module</button>
 				</div>
 			</div>
 			<div class="row">
@@ -279,10 +279,6 @@
 		var selected = -1;
 		var lists = null;
 		var modules = null;
-		var deleteList = -1;
-		var editList = -1;
-		var deleteModule = -1;
-		var editModule = -1;
 		
 		function select(listId) {
 			if(selected != -1) {
@@ -545,6 +541,26 @@
 			});
 		}
 		
+		function filterModules() {
+			// Declare variables 
+			var input, filter, table, tr, td, i;
+			input = document.getElementById("txtModulesSearch");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("tblModules");
+			tr = table.getElementsByTagName("tr");
+
+			// Loop through all table rows, and hide those who don't match the search query
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				} 
+			}
+		}
 		$(document).ready(function() {
 			$("#navManage").addClass("active");
 			loadLists();

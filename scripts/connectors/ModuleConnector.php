@@ -23,7 +23,7 @@
 			
 			$this->selectStatement = $mysqli->prepare("SELECT * FROM `" . ModuleConnector::$TABLE_NAME . "` WHERE `" . ModuleConnector::$COLUMN_MODULECODE . "` = ?");
 
-			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM `" . ModuleConnector::$TABLE_NAME);
+			$this->selectAllStatement = $mysqli->prepare("SELECT * FROM `" . ModuleConnector::$TABLE_NAME . "` ORDER BY `" . ModuleConnector::$COLUMN_MODULECODE . "`");
 
 			$this->deleteStatement = $mysqli->prepare("DELETE FROM " . ModuleConnector::$TABLE_NAME . " WHERE `" . ModuleConnector::$COLUMN_MODULECODE . "` = ?");
 
