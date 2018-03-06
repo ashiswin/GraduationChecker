@@ -302,7 +302,14 @@
 					var moduleTableHTML = "";
 					
 					for(var i = 0; i < resultObject.modules.length; i++) {
-						moduleTableHTML += "<tr><td>" + (i + 1) + "</td><td>" + resultObject.modules[i].moduleCode + " - " + resultObject.modules[i].moduleName + "</td><td>" + resultObject.modules[i].requiredGrades + "</td><td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"edit-module\"><i class=\"fa fa-pencil\"></i></a></td><td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"delete-module\"><i class=\"fa fa-times\"></i></td></a></tr>";
+						moduleTableHTML += "<tr>";
+						moduleTableHTML += "<td>" + (i + 1) + "</td>";
+						moduleTableHTML += "<td>" + resultObject.modules[i].moduleCode + "</td>";
+						moduleTableHTML += "<td>" + resultObject.modules[i].moduleName + "</td>";
+						moduleTableHTML += "<td>" + resultObject.modules[i].requiredGrades + "</td>";
+						moduleTableHTML += "<td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"edit-module\"><i class=\"fa fa-pencil\"></i></a></td>";
+						moduleTableHTML += "<td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"delete-module\"><i class=\"fa fa-times\"></i></a></td>";
+						moduleTableHTML += "</tr>";
 					}
 					
 					$("#tblModules").html(moduleTableHTML);
