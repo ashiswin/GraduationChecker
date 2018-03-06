@@ -60,11 +60,11 @@
 	<?php require_once 'nav.php' ?>
 	<!-- UI element for top selector (Details, Stats, Attendees) -->
 	<ul class="nav nav-tabs" style="margin-top: 2vh; margin-left: 2vh;">
-		<li class="nav-item"><a href="#" class="nav-link" id="tabLists">Modules</a></li>
+		<li class="nav-item"><a href="#" class="nav-link" id="tabModules">Modules</a></li>
 		<li class="nav-item"><a href="#" class="nav-link" id="tabModuleLists">Lists</a></li>
 	</ul>
 	<div class="container-fluid">
-		<div id="paneModules" class="row main-content">
+		<div id="paneModules" class="row">
 			<div class="row">
 				<div class="col-md-10">
 					<div class="input-group">
