@@ -552,6 +552,7 @@
 			// Loop through all table rows, and hide those who don't match the search query
 			for (i = 0; i < tr.length; i++) {
 				var tds = tr[i].getElementsByTagName("td");
+				if(!tds) continue;
 				for(var j = 1; j < td.length - 2; j++) {
 					td = tds[j];
 					if (td) {
