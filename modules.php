@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>GradCheck - Manage Modules</title>
+	<title><?php echo SITE_NAME; ?> - Manage Modules</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/common.css">
@@ -65,6 +65,24 @@
 		<li class="nav-item"><a href="#" class="nav-link" id="tabModuleLists">Module Lists</a></li>
 	</ul>
 	<div class="container-fluid">
+		<div id="paneModules" class="row main-content">
+			<div class="row">
+				<div class="col-md-10">
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
+						<input type="text" class="form-control" placeholder="Module code, Module name..." aria-describedby="basic-addon1" id="txtAddTrackCoreSearch">
+					</div>
+				</div>
+				<div class="col-md-2">
+					<button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Module</button>
+				</div>
+			</div>
+			<table class="table table-hover">
+				<thead><tr><th>#</th><th>Module</th><th>Required Grades</th><th><i class="fa fa-pencil"></i></th><th><i class="fa fa-times"></i></th></tr></thead>
+				<tbody id="tblModules">
+				</tbody>
+			</table>
+		</div>
 		<div id="paneModuleLists" class="row main-content">
 			<!-- Create side pane with events -->
 			<div class="col-md-4 col-xs-4">
@@ -84,132 +102,6 @@
 						<tbody id="tblModules">
 						</tbody>
 					</table>
-				</div>
-			</div>
-		</div>
-		<div id="paneRules" class="row main-content">
-			<!-- Create side pane with events -->
-			<div class="col-md-4 col-xs-4">
-				<div class="scrollable">
-					<table class="table table-hover" id="tblLists">
-						<thead><th>Rules</th></thead>
-						<tbody class="detailList" id="detailRules">
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<!-- Begin main detail view -->
-			<div class="col-md-8 col-xs-8 scrollable" style="border-left: 1px solid #CCCCCC;">
-				<div id="mainContentRules" style="margin-top: 2vh">
-					<h3>Required Modules <span class="float-md-right"><button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Module</button></span></h3>
-					<br>
-					<div id="requiredModuleContainer" style="margin-left: 2vh; margin-right: 2vh">
-						<div class="card">
-							<div class="card-header">
-								<h5 class="mb-0">
-									03.007 - Introduction to Design<span class="float-md-right">Required Grades: A,B,C&nbsp;&nbsp;<i class="fa fa-pencil"></i>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
-								</h5>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header">
-								<h5 class="mb-0">
-									03.007 - Introduction to Design<span class="float-md-right">Required Grades: A,B,C&nbsp;&nbsp;<i class="fa fa-pencil"></i>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
-								</h5>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header">
-								<h5 class="mb-0">
-									03.007 - Introduction to Design<span class="float-md-right">Required Grades: A,B,C&nbsp;&nbsp;<i class="fa fa-pencil"></i>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
-								</h5>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header">
-								<h5 class="mb-0">
-									03.007 - Introduction to Design<span class="float-md-right">Required Grades: A,B,C&nbsp;&nbsp;<i class="fa fa-pencil"></i>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
-								</h5>
-							</div>
-						</div>
-					</div>
-					<br>
-					<h3>Required Module Lists <span class="float-md-right"><button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Module List</button></span></h3>
-					<br>
-					<div id="moduleListsContainer" style="margin-left: 2vh; margin-right: 2vh">
-						<div class="card">
-							<div class="card-header" role="tab" id="headingOne">
-								<h5 class="mb-0">
-									<a data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-										Freshmore Old
-									</a>
-									<span class="float-md-right"><i class="fa fa-pencil"></i>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
-								</h5>
-							</div>
-
-							<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-								<div class="card-block">
-									Students need to pass all modules in the list excluding the following modules:<br>
-									&nbsp;&nbsp;&nbsp;&nbsp;<b>10.002 - Advanced Math 1</b><br>
-									&nbsp;&nbsp;&nbsp;&nbsp;<b>10.002 - Advanced Math 1</b><br>
-									&nbsp;&nbsp;&nbsp;&nbsp;and all other modules they have already taken.
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<h3>Optional Module Sets <span class="float-md-right"><button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Module Set</button></span></h3>
-					<br>
-					<div id="moduleSetContainer" style="margin-left: 2vh; margin-right: 2vh">
-						<div class="card">
-							<div class="card-header" role="tab" id="headingOne">
-								<h5 class="mb-0">
-									<a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-										Students need to take <u>1</u> of the following modules
-									</a>
-									<span class="float-md-right"><i class="fa fa-pencil"></i>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
-								</h5>
-							</div>
-
-							<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-								<div class="card-block">
-									<b>10.002 - Advanced Math 1</b><span class="float-md-right">Required Grades: A,B,C</span><br>
-									<b>10.002 - Advanced Math 1</b><span class="float-md-right">Required Grades: A,B,C</span><br>
-									<b>10.002 - Advanced Math 1</b><span class="float-md-right">Required Grades: A,B,C</span><br>
-									<b>10.002 - Advanced Math 1</b><span class="float-md-right">Required Grades: A,B,C</span><br>
-									<br>
-									or from the following module lists:<br>
-									&nbsp;&nbsp;&nbsp;&nbsp;<b>Freshmore Old</b><br>
-									&nbsp;&nbsp;&nbsp;&nbsp;<b>Freshmore New</b><br>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<h3>Required Rules <span class="float-md-right"><button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Rule</button></span></h3>
-					<br>
-					<div id="requiredRulesContainer" style="margin-left: 2vh; margin-right: 2vh">
-						<div class="card">
-							<div class="card-header">
-								<h5 class="mb-0">
-									HASS Humanities and Arts Requirement<span class="float-md-right"><i class="fa fa-times"></i></span>
-								</h5>
-							</div>
-						</div>
-					</div>
-					<br>
-					<h3>Rules to Ignore Completed Modules From <span class="float-md-right"><button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Rule</button></span></h3>
-					<br>
-					<div id="ignoreRulesContainer" style="margin-left: 2vh; margin-right: 2vh">
-						<div class="card">
-							<div class="card-header">
-								<h5 class="mb-0">
-									HASS Humanities and Arts Requirement<span class="float-md-right"><i class="fa fa-times"></i></span>
-								</h5>
-							</div>
-						</div>
-					</div>
-					<br>
 				</div>
 			</div>
 		</div>
