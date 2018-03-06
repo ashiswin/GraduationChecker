@@ -65,7 +65,7 @@
 	</ul>
 	<div class="container-fluid">
 		<div id="paneModules">
-			<div class="row">
+			<div class="row" style="margin-top: 2vh;">
 				<div class="col-md-10">
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
@@ -73,15 +73,17 @@
 					</div>
 				</div>
 				<div class="col-md-2">
-					<button class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Module</button>
+					<button class="btn btn-primary" id="btnAddModule"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Module</button>
 				</div>
 			</div>
 			<div class="row">
-				<table class="table table-hover">
-					<thead><tr><th>#</th><th>Module</th><th>Required Grades</th><th><i class="fa fa-pencil"></i></th><th><i class="fa fa-times"></i></th></tr></thead>
-					<tbody id="tblModules">
-					</tbody>
-				</table>
+				<div class="col-md-12">
+					<table class="table table-hover">
+						<thead><tr><th>#</th><th>Module</th><th>Required Grades</th><th><i class="fa fa-pencil"></i></th><th><i class="fa fa-times"></i></th></tr></thead>
+						<tbody id="tblModules">
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 		<div id="paneModuleLists" class="row main-content">
@@ -295,13 +297,8 @@
 						moduleTableHTML += "<tr><td>" + (i + 1) + "</td><td>" + resultObject.modules[i].moduleCode + " - " + resultObject.modules[i].moduleName + "</td><td>" + resultObject.modules[i].requiredGrades + "</td><td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"edit-module\"><i class=\"fa fa-pencil\"></i></a></td><td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"delete-module\"><i class=\"fa fa-times\"></i></td></a></tr>";
 					}
 					
-					moduleTableHTML += "<tr><td colspan=\"5\"><a href=\"#\" id=\"btnAddModule\"><i class=\"fa fa-plus\"></i>&nbsp;&nbsp;Add module</a></td></tr>";
 					$("#tblModules").html(moduleTableHTML);
 					
-					$("#btnAddModule").unbind().click(function(e) {
-						e.preventDefault();
-						$("#mdlAddModule").modal();
-					});
 					$(".edit-module").click(function(e) {
 						e.preventDefault();
 						editModule = $(this).attr('id');
@@ -512,6 +509,11 @@
 			});
 			
 			$("#tabModules").click();
+			
+			$("#btnAddModule").unbind().click(function(e) {
+				e.preventDefault();
+				$("#mdlAddModule").modal();
+			});
 		});
 	</script>
 </body>
