@@ -290,10 +290,85 @@
 			}
 			selected = listId;
 			$("#" + listId).addClass('bg-info');
-			loadModules(listId);
+			loadListModules(listId);
 		}
 		
-		function loadModules(listId) {
+		function loadListModules(listId) {
+			$.get("scripts/GetModules.php", function(resultData) {
+				var resultObject = JSON.parse(resultData);
+				
+				if(resultObject.success) {
+					modules = resultObject.modules;
+					var moduleTableHTML = "";
+					
+					for(var i = 0; i < resultObject.modules.length; i++) {
+						moduleTableHTML += "<tr><td>" + (i + 1) + "</td><td>" + resultObject.modules[i].moduleCode + " - " + resultObject.modules[i].moduleName + "</td><td>" + resultObject.modules[i].requiredGrades + "</td><td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"edit-module\"><i class=\"fa fa-pencil\"></i></a></td><td><a href=\"#\" id=\"" + resultObject.modules[i].id + "\" class=\"delete-module\"><i class=\"fa fa-times\"></i></td></a></tr>";
+					}
+					
+					$("#tblModules").html(moduleTableHTML);
+					
+					$(".edit-module").click(function(e) {
+						e.preventDefault();
+						editModule = $(this).attr('id');
+						$("#mdlEditModule").modal();
+						for(var i = 0; i < modules.length; i++) {
+							if(modules[i].id == $(this).attr('id')) {
+								$("#txtEditModuleCode").val(modules[i].moduleCode);
+								$("#txtEditModuleName").val(modules[i].moduleName);
+								$("#txtEditRequiredGrades").val(modules[i].requiredGrades);
+							}
+						}
+					});
+					$("#btnEditModuleSave").unbind().click(function() {
+						var moduleCode = $("#txtEditModuleCode").val();
+						var moduleName = $("#txtEditModuleName").val();
+						var requiredGrades = $("#txtEditRequiredGrades").val();
+						
+						if(!moduleCode.trim()) {
+							$("#txtEditModuleCode")[0].setCustomValidity("Please enter the module's code");
+							$("#txtEditModuleCode")[0].reportValidity();
+							return;
+						}
+						else if(!moduleName.trim()) {
+							$("#txtEditModuleName")[0].setCustomValidity("Please enter the module's name");
+							$("#txtEditModuleName")[0].reportValidity();
+							return;
+						}
+						else if(!requiredGrades.trim()) {
+							$("#txtEditRequiredGrades")[0].setCustomValidity("Please enter the required grades to pass");
+							$("#txtEditRequiredGrades")[0].reportValidity();
+							return;
+						}
+						$.post("scripts/EditModuleListItem.php", { id: editModule, moduleCode: moduleCode, moduleName: moduleName, requiredGrades: requiredGrades }, function(resultData) {
+							var resultObject = JSON.parse(resultData);
+								
+							if(resultObject.success) {
+								$("#mdlEditModule").modal('hide');
+								loadListModules(selected);
+							}
+						});
+					});
+					
+					$(".delete-module").click(function(e) {
+						e.preventDefault();
+						deleteModule = $(this).attr('id');
+						$("#mdlDeleteModule").modal();
+					});
+					$("#btnDeleteModuleConfirm").unbind().click(function() {
+						$.post("scripts/DeleteModule.php", { id: deleteModule }, function(resultData) {
+							var resultObject = JSON.parse(resultData);
+								
+							if(resultObject.success) {
+								$("#mdlDeleteModule").modal('hide');
+								loadListModules(selected);
+							}
+						});
+					});
+				}
+			});
+		}
+		
+		function loadListModules(listId) {
 			$.get("scripts/GetModuleListItems.php?listId=" + listId, function(resultData) {
 				var resultObject = JSON.parse(resultData);
 				
@@ -344,7 +419,7 @@
 								
 							if(resultObject.success) {
 								$("#mdlEditModule").modal('hide');
-								loadModules(selected);
+								loadListModules(selected);
 							}
 						});
 					});
@@ -360,37 +435,7 @@
 								
 							if(resultObject.success) {
 								$("#mdlDeleteModule").modal('hide');
-								loadModules(selected);
-							}
-						});
-					});
-					
-					$("#btnAddModuleSave").unbind().click(function() {
-						var moduleCode = $("#txtModuleCode").val();
-						var moduleName = $("#txtModuleName").val();
-						var requiredGrades = $("#txtRequiredGrades").val();
-						
-						if(!moduleCode.trim()) {
-							$("#txtModuleCode")[0].setCustomValidity("Please enter the module's code");
-							$("#txtModuleCode")[0].reportValidity();
-							return;
-						}
-						else if(!moduleName.trim()) {
-							$("#txtModuleName")[0].setCustomValidity("Please enter the module's name");
-							$("#txtModuleName")[0].reportValidity();
-							return;
-						}
-						else if(!requiredGrades.trim()) {
-							$("#txtRequiredGrades")[0].setCustomValidity("Please enter the required grades to pass");
-							$("#txtRequiredGrades")[0].reportValidity();
-							return;
-						}
-						$.post("scripts/AddModuleListItem.php", { listId: selected, moduleCode: moduleCode, moduleName: moduleName, requiredGrades: requiredGrades }, function(resultData) {
-							var resultObject = JSON.parse(resultData);
-								
-							if(resultObject.success) {
-								$("#mdlAddModule").modal('hide');
-								loadModules(selected);
+								loadListModules(selected);
 							}
 						});
 					});
@@ -521,6 +566,36 @@
 			$("#btnAddModule").unbind().click(function(e) {
 				e.preventDefault();
 				$("#mdlAddModule").modal();
+			});
+			
+			$("#btnAddModuleSave").unbind().click(function() {
+				var moduleCode = $("#txtModuleCode").val();
+				var moduleName = $("#txtModuleName").val();
+				var requiredGrades = $("#txtRequiredGrades").val();
+				
+				if(!moduleCode.trim()) {
+					$("#txtModuleCode")[0].setCustomValidity("Please enter the module's code");
+					$("#txtModuleCode")[0].reportValidity();
+					return;
+				}
+				else if(!moduleName.trim()) {
+					$("#txtModuleName")[0].setCustomValidity("Please enter the module's name");
+					$("#txtModuleName")[0].reportValidity();
+					return;
+				}
+				else if(!requiredGrades.trim()) {
+					$("#txtRequiredGrades")[0].setCustomValidity("Please enter the required grades to pass");
+					$("#txtRequiredGrades")[0].reportValidity();
+					return;
+				}
+				$.post("scripts/AddModule.php", { listId: selected, moduleCode: moduleCode, moduleName: moduleName, requiredGrades: requiredGrades }, function(resultData) {
+					var resultObject = JSON.parse(resultData);
+						
+					if(resultObject.success) {
+						$("#mdlAddModule").modal('hide');
+						loadModules();
+					}
+				});
 			});
 		});
 	</script>
