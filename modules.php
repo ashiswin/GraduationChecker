@@ -65,7 +65,7 @@
 	</ul>
 	<div class="container-fluid">
 		<div id="paneModules" class="row">
-			<div class="row">
+			<div class="col-md-12">
 				<div class="col-md-10">
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
