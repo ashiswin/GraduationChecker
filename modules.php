@@ -66,13 +66,13 @@
 	<div class="container-fluid">
 		<div id="paneModules">
 			<div class="row" style="margin-top: 2vh;">
-				<div class="col-md-10">
+				<div class="col-md-9">
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
 						<input type="text" class="form-control" placeholder="Module code, Module name..." aria-describedby="basic-addon1" id="txtModulesSearch" onkeyup="filterModules()">
 					</div>
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<button class="btn btn-primary float-right" id="btnAddModule"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add Module</button>
 					<button class="btn btn-success float-right" id="btnUploadModule"><i class="fa fa-upload"></i>&nbsp;&nbsp;Upload Modules</button>
 				</div>
