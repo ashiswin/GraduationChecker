@@ -553,7 +553,7 @@
 			for (i = 0; i < tr.length; i++) {
 				var tds = tr[i].getElementsByTagName("td");
 				if(!tds) continue;
-				for(var j = 1; j < td.length - 2; j++) {
+				for(var j = 1; j < tds.length - 2; j++) {
 					td = tds[j];
 					if (td) {
 						if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
